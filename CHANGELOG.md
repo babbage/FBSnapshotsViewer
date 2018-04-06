@@ -3,6 +3,7 @@
 ### 0.8.1 (Next)
 
 * Your contribution here.
+* [#68](https://github.com/Antondomashnev/FBSnapshotsViewer/pull/68): Fix error and add step to contributor text. - [@antondomashnev](https://github.com/antondomashnev).
 
 ### 0.8.0 (11.10.2017)
 
