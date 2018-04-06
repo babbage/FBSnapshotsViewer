@@ -52,13 +52,23 @@ class SnapshotTestResultSwapper {
     }
     
     func swap(_ testResult: SnapshotTestResult) throws -> SnapshotTestResult {
-        guard case let SnapshotTestResult.failed(testInformation, _, _, failedImagePath, build) = testResult, canSwap(testResult) else {
+        let removeAcceptedImages = true
+        
+        guard case let SnapshotTestResult.failed(testInformation, referenceImagePath, diffImagePath, failedImagePath, build) = testResult, canSwap(testResult) else {
             throw SnapshotTestResultSwapperError.canNotBeSwapped(testResult: testResult)
         }
         let failedImageURL = URL(fileURLWithPath: failedImagePath, isDirectory: false)
         do {
             let recordedImageURL = try buildRecordedImageURL(from: failedImagePath, of: testResult)
             try fileManager.moveItem(at: failedImageURL, to: recordedImageURL)
+
+            if removeAcceptedImages {
+                let referenceImageURL = URL(fileURLWithPath: referenceImagePath, isDirectory: false)
+                let diffImageURL = URL(fileURLWithPath: diffImagePath, isDirectory: false)
+                try fileManager.removeItem(at: failedImageURL)
+                try fileManager.removeItem(at: referenceImageURL)
+                try fileManager.removeItem(at: diffImageURL)
+            }
             imageCache.invalidate()
             return SnapshotTestResult.recorded(testInformation: testInformation, referenceImagePath: recordedImageURL.path, build: build)
         }
