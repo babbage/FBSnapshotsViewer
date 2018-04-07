@@ -66,9 +66,9 @@ class SnapshotTestResultAcceptor {
             if removeAcceptedImages {
                 let referenceImageURL = URL(fileURLWithPath: referenceImagePath, isDirectory: false)
                 let diffImageURL = URL(fileURLWithPath: diffImagePath, isDirectory: false)
-                try fileManager.removeItem(at: failedImageURL)
-                try fileManager.removeItem(at: referenceImageURL)
-                try fileManager.removeItem(at: diffImageURL)
+                try fileManager.deleteItem(at: failedImageURL)
+                try fileManager.deleteItem(at: referenceImageURL)
+                try fileManager.deleteItem(at: diffImageURL)
             }
             imageCache.invalidate()
             return SnapshotTestResult.recorded(testInformation: testInformation, referenceImagePath: recordedImageURL.path, build: build)
