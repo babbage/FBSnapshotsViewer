@@ -10,7 +10,9 @@ import Foundation
 
 extension FileManager {
     func moveItem(at fromURL: URL, to toURL: URL) throws {
-        try self.removeItem(at: toURL)
+        if fileExists(atPath: toURL.path) {
+            try self.removeItem(at: toURL)
+        }
         try self.copyItem(at: fromURL, to: toURL)
     }
 }

@@ -3,6 +3,7 @@
 ### 0.8.1 (Next)
 
 * Your contribution here.
+* [#72](https://github.com/Antondomashnev/FBSnapshotsViewer/pull/72): Recognise and enable acceptance of AutoRecorded images. - [@babbage](https://github.com/babbage).
 
 ### 0.8.0 (11.10.2017)
 
