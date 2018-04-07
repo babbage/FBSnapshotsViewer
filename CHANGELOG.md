@@ -3,6 +3,7 @@
 ### 0.8.1 (Next)
 
 * Your contribution here.
+* [#71](https://github.com/Antondomashnev/FBSnapshotsViewer/pull/71): Mechanism to reject snapshot. - [@babbage](https://github.com/babbage).
 
 ### 0.8.0 (11.10.2017)
 
